@@ -1,0 +1,33 @@
+﻿@model List<Empleado>
+
+<h1 class="text-center">Empleados LINQ To SQL</h1>
+
+<a asp-controller="Empleados" asp-action="BuscadorEmpleados" class="btn btn-primary">
+    Buscador
+</a>
+
+<table class="table -table-info">
+    <thead>
+        <tr>
+            <th>Apellidos</th>
+            <th>Oficio</th>
+            <th>Salario</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Empleado emp in Model)
+        {
+            <tr>
+                <td>@emp.Apellido</td>
+                <td>@emp.Oficio</td>
+                <td>
+                    <a asp-controller="Empleados" asp-action="Details"
+                   asp-route-idempleado="@emp.IdEmpleado" class="btn btn-info">
+                        @*idempleado debe llamarse igual que el parametro del IActionResult*@
+                        Details
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
